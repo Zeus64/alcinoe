@@ -349,10 +349,13 @@ end;
 {*******************************************************************}
 procedure TALAniCalculations.TDisplayLinkListener.displayLinkUpdated;
 begin
-  if assigned(fAniCalculations.fOnTimer) then
-    fAniCalculations.fOnTimer(fAniCalculations)
-  else
-    fAniCalculations.Calculate;
+  if not fAniCalculations.Down then
+  begin
+    if assigned(fAniCalculations.fOnTimer) then
+      fAniCalculations.fOnTimer(fAniCalculations)
+    else
+      fAniCalculations.Calculate;
+  end;
 end;
 
 {*****************************************************************************}
